@@ -1,0 +1,78 @@
+#main {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  /* justify-content: center; */
+  /* align-content: center; */
+  background-color: lightgoldenrodyellow;
+  border: 1px solid thistle;
+}
+h1 {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: blue;
+  /* background-color: rgb(250, 128, 114, 0.2); */
+}
+#addTask {
+  width: 100px;
+  flex: 1 0 10px;
+}
+.panels{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin: auto 5%;
+  padding: 5px;
+  /* border: 1px solid blue; */
+  /* background-color: antiquewhite; */
+}
+.panel {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid orangered;
+  background-color: bisque;
+  flex: 0 1 33%;
+  width: 20%;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+h2 {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: blue;
+  /* background-color: rgb(250, 128, 114, 0.2); */
+}
+.content {
+  display: flex;
+  flex-flow: column nowrap;
+  /* background-color: rgba(100, 149, 237,0.25); */
+}
+.card {
+  display: flex;
+  flex-flow: column nowrap;
+  /* justify-content: flex-start; */
+  /* align-items: center; */
+  background-color: aquamarine;
+  color: green;
+  border: 2px solid green;
+  width: 200px;
+  /* height: 200px; */
+  margin: 5px 5px;
+  padding: 5px 5px;
+}
+.card:hover{
+  border: 3px solid blue;
+  background-color: white;
+  color: blue;
+}
+h4 {
+  margin-top: 0px;
+  text-align: center;
+  /* border: 1px solid orange; */
+}
+.card>div{
+  font-size: 12px;
+  margin-left: 15%;
+}
