@@ -1,4 +1,5 @@
-#main {
+
+#main,#root {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -6,6 +7,8 @@
   /* align-content: center; */
   background-color: lightgoldenrodyellow;
   border: 1px solid thistle;
+  margin: 0;
+  width: 100%;
 }
 h1 {
   margin-top: 5px;
@@ -18,13 +21,15 @@ h1 {
   flex: 1 0 10px;
 }
 .panels{
+  box-sizing: border-box;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  margin: auto 5%;
+  margin: 1% 5%;
   padding: 5px;
-  /* border: 1px solid blue; */
-  /* background-color: antiquewhite; */
+  border: 1px solid blue;
+  background-color: antiquewhite;
+  width: 95%;
 }
 .panel {
   display: flex;
@@ -33,7 +38,7 @@ h1 {
   align-items: center;
   border: 1px solid orangered;
   background-color: bisque;
-  flex: 0 1 33%;
+  flex: 0 0 170px;
   width: 20%;
   margin-left: 15px;
   margin-right: 15px;
@@ -52,27 +57,93 @@ h2 {
 .card {
   display: flex;
   flex-flow: column nowrap;
-  /* justify-content: flex-start; */
+  justify-content: flex-start;
   /* align-items: center; */
   background-color: aquamarine;
   color: green;
   border: 2px solid green;
-  width: 200px;
+  /* width: 100px; */
   /* height: 200px; */
   margin: 5px 5px;
   padding: 5px 5px;
+}
+.card.hover{
+  display:none;
 }
 .card:hover{
   border: 3px solid blue;
   background-color: white;
   color: blue;
 }
-h4 {
+.card div label.hover{
+  display:none;
+}
+.hover:hover{
+  display:block !important;
+}
+.card>h4 {
   margin-top: 0px;
+  margin-bottom: 0px;
   text-align: center;
+  height:30px !important;
   /* border: 1px solid orange; */
 }
 .card>div{
   font-size: 12px;
+  margin: 0;
   margin-left: 15%;
+}
+
+#kanbanControl {
+  box-sizing: content-box;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid blue;
+}
+#addForm,#editForm {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center !important;
+  border: 1px solid purple;
+  padding: 5px;
+}
+#editForm{
+  display: none;
+}
+label{
+  font-weight: 700;
+}
+#title,#priority,#task{
+  display:flex;
+  flex-flow:row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1px 1px;
+}
+#saveTask, #save {
+  display:flex;
+  flex-flow:row nowrap;
+  justify-content: center;
+  align-content: center;
+  align-self: center !important;
+  margin: 1px 1px;
+}
+.center {
+  text-align: center;
+}
+input[type='text']{
+  height: 15px;
+}
+input[type='number']{
+  height: 15px;
+  text-align: right;
+}
+.right {
+  text-align: right;
+}
+.left {
+  text-align: left;
 }

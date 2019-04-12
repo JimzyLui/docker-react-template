@@ -3,49 +3,68 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 import './components/components.css';
-import {arrPanels, arrCards} from './components/data';
+import {arrPanelTitles} from './components/data';
 import Panel from './components/Panel.js';
-import Card from './components/Card';
+import KanbanControl from './components/KanbanControl.js';
+// import Card from './components/Card';
+// this.getTasks = this.getTasks.bind(this);
+
 // console.log(arrPanels);
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      loading: true
     };
   }
 
-  render() {
+/*
+    addTask = ()=>{
+      const card = new Card();
+      card.key = arrCards.reduce((prev, curr) => card.key > curr ? card.key: curr, card.key);
+
+      card.title = 'title';
+      card.status='pending';
+      card.priority=3;
+      card.assignedBy='unknown';
+      card.assignedTo='unassigned';
+      arrCards.push(card);
+    }
+*/
+componentDidMount(){
+  this.setState({ loading: false });
+
+}
+render() {
+  // console.log('hi')
+  if(this.state.loading){
+    return <h1>Loading</h1>
+  }
+  console.log('app render titles: ',arrPanelTitles);
     return (
       <div id='main'>
         <h1>KANBAN</h1>
-        <button type='submit' id='addTask' onClick='addTask()'>Add Task</button>
-        <div className='panels'>
-        {
-          arrPanels.map(panel=>{
-            // console.log(panel.key)
-            return(
-              <Panel title={panel.key}/>
-              )
-            })
-          }
-        </div>
+        <KanbanControl />
+        <Panels panelTitles={arrPanelTitles} />
+
       </div>
     )
   }
 
-
-
-  addTask = ()=>{
-    const card = new Card();
-    card.key = arrCards.reduce((prev, curr) => card.key > curr ? card.key: curr, card.key);
-
-    card.title = 'title';
-    card.status='pending';
-    card.priority=3;
-    card.assignedBy='unknown';
-    card.assignedTo='unassigned';
-    arrCards.push(card);
-  }
+}
+function Panels(props) {
+  // console.log(props)
+  console.log('fxPanels.props: ',props);
+  const arrPanelTitles = props.panelTitles;
+  console.log('fxPanels: ', arrPanelTitles);
+  const arrPanels = arrPanelTitles.map((panelTitle) =>
+    <Panel key={panelTitle.toString()}>
+      {panelTitle}
+    </Panel>
+  );
+  return (
+    <div className='panels'>{arrPanels}</div>
+  );
 }
 
 

@@ -1,12 +1,13 @@
 const tableName = 'tasks';
 exports.up = function(knex, Promise) {
   return knex.schema.createTable(tableName, function(table){
-    table.increments('key');
-    table.string('title',50);
+    table.increments('id');
+    table.string('title',25);
     table.integer('priority').default(3);
-    table.string('task',50);
-    table.string('createdBy',100);
-    table.string('assignedTo',100).default('unassigned');
+    table.string('status',10).notNullable().default('pending');
+    table.string('task',100);
+    table.string('createdBy',50);
+    table.string('assignedTo',50).default('unassigned');
   });
 };
 

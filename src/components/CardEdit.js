@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Card extends Component {
+class CardEdit extends Component {
   constructor(props) {
     super(props);
     this.state = {

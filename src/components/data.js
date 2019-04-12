@@ -67,8 +67,9 @@ const arrCards = [
 ];
 
 
-const arrPanels = [{key:'Pending'},{key:'Current'},{key:'Done'},{key:'Archived'}];
+// const arrPanels = [{key:'Pending'},{key:'Current'},{key:'Done'},{key:'Archived'}];
+const arrPanels = ['Pending','Current','Done','Archived'];
 
 module.exports = {
-  arrCards, arrPanels
+  arrCards, arrPanelTitles: arrPanels
 }
