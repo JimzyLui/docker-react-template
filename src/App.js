@@ -1,11 +1,10 @@
-
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import logo from './logo.svg';
-import './App.css';
-import './components/components.css';
-import {arrPanelTitles} from './components/data';
-import Panel from './components/Panel.js';
-import KanbanControl from './components/KanbanControl.js';
+import "./App.css";
+import "./components/components.css";
+import { arrPanelTitles } from "./components/data";
+import Panel from "./components/Panel.js";
+import KanbanControl from "./components/KanbanControl.js";
 // import Card from './components/Card';
 // this.getTasks = this.getTasks.bind(this);
 
@@ -18,7 +17,7 @@ class App extends Component {
     };
   }
 
-/*
+  /*
     addTask = ()=>{
       const card = new Card();
       card.key = arrCards.reduce((prev, curr) => card.key > curr ? card.key: curr, card.key);
@@ -31,46 +30,35 @@ class App extends Component {
       arrCards.push(card);
     }
 */
-componentDidMount(){
-  this.setState({ loading: false });
-
-}
-render() {
-  // console.log('hi')
-  if(this.state.loading){
-    return <h1>Loading</h1>
+  componentDidMount() {
+    this.setState({ loading: false });
   }
-  console.log('app render titles: ',arrPanelTitles);
+  render() {
+    // console.log('hi')
+    if (this.state.loading) {
+      return <h1>Loading</h1>;
+    }
+    console.log("app render titles: ", arrPanelTitles);
     return (
-      <div id='main'>
+      <div id="main">
         <h1>KANBAN</h1>
         <KanbanControl />
         <Panels panelTitles={arrPanelTitles} />
-
       </div>
-    )
+    );
   }
-
 }
+
 function Panels(props) {
   // console.log(props)
-  console.log('fxPanels.props: ',props);
+  console.log("fxPanels.props: ", props);
   const arrPanelTitles = props.panelTitles;
-  console.log('fxPanels: ', arrPanelTitles);
-  const arrPanels = arrPanelTitles.map((panelTitle) =>
-    <Panel key={panelTitle.toString()}>
-      {panelTitle}
-    </Panel>
-  );
-  return (
-    <div className='panels'>{arrPanels}</div>
-  );
+  console.log("fxPanels: ", arrPanelTitles);
+  const arrPanels = arrPanelTitles.map(panelTitle => (
+    <Panel key={panelTitle.toString()}>{panelTitle}</Panel>
+  ));
+  return <div className="panels">{arrPanels}</div>;
 }
-
-
-
-
-
 
 /*
 statusNext = ()=>{
@@ -101,14 +89,7 @@ statusPrevious = ()=>{
 }
 */
 
-
-
-
-
-
-
 export default App;
-
 
 /*
 class App extends Component {
@@ -212,9 +193,3 @@ class App extends Component {
   }
 }
 */
-
-
-
-
-
-
