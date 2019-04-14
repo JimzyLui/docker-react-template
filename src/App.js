@@ -4,7 +4,7 @@ import "./App.css";
 import "./components/components.css";
 import { arrPanelTitles } from "./components/data";
 import Panel from "./components/Panel.js";
-import KanbanControl from "./components/KanbanControl.js";
+import AddCardForm from "./components/AddCardForm.jsx";
 // import Card from './components/Card';
 // this.getTasks = this.getTasks.bind(this);
 
@@ -38,11 +38,11 @@ class App extends Component {
     if (this.state.loading) {
       return <h1>Loading</h1>;
     }
-    console.log("app render titles: ", arrPanelTitles);
+    // console.log("app render titles: ", arrPanelTitles);
     return (
       <div id="main">
         <h1>KANBAN</h1>
-        <KanbanControl />
+        <AddCardForm />
         <Panels panelTitles={arrPanelTitles} />
       </div>
     );
@@ -50,10 +50,9 @@ class App extends Component {
 }
 
 function Panels(props) {
-  // console.log(props)
-  console.log("fxPanels.props: ", props);
+  // console.log("fxPanels.props: ", props);
   const arrPanelTitles = props.panelTitles;
-  console.log("fxPanels: ", arrPanelTitles);
+  // console.log("fxPanels: ", arrPanelTitles);
   const arrPanels = arrPanelTitles.map(panelTitle => (
     <Panel key={panelTitle.toString()}>{panelTitle}</Panel>
   ));

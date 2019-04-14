@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Dropdown from "./Dropdown.js";
-import TextboxWithLabel from "./TextboxWithLabel.js";
+// import TextboxWithLabel from "./TextboxWithLabel.js";
 import { arrPriorities } from "./data";
 
 class Card extends Component {
@@ -22,7 +22,6 @@ class Card extends Component {
     this.setState({ view: "readonly" });
   }
   deleteCard() {
-
     this.setState({ view: "readonly" });
   }
   cancel() {
@@ -39,6 +38,7 @@ class Card extends Component {
 
   render() {
     const cardInfo = this.props.cardInfo;
+    /*
     const objCreatedBySettings = {
       // title: "Created By",
       // name: "createdBy",
@@ -47,6 +47,8 @@ class Card extends Component {
       tbClassName: ""
       // value: cardInfo.createdBy
     };
+    */
+
     if (this.state.view === "readonly") {
       return (
         <div
@@ -81,15 +83,14 @@ class Card extends Component {
           data-status={this.state.status}
         >
           <div className="center">**edit**</div>
-        <form>
-          <div>
+          <form method="POST">
             <div>
               <label htmlFor="title">Task: </label>
               <input name="title" type="text" defaultValue={cardInfo.title} />
             </div>
             <div>
               <label htmlFor="">Description: </label>
-              <textarea defaultValue={cardInfo.task} />
+              <textarea name="task" defaultValue={cardInfo.task} />
             </div>
             <div className="flexRowNoWrap">
               <label htmlFor="priority">Priority: </label>
@@ -101,15 +102,16 @@ class Card extends Component {
             </div>
 
             {/* <TextboxWithLabel
-              name="createdBy"
-              title="Created By"
-              defaultValue={cardInfo.createdBy}
-              settings={objCreatedBySettings}
-            /> */}
+                  name="createdBy"
+                  title="Created By"
+                  defaultValue={cardInfo.createdBy}
+                  settings={objCreatedBySettings}
+                /> */}
             <div>
               <label htmlFor="createdBy">Created By:</label>
               <input
                 id="createdBy"
+                name="createdBy"
                 type="text"
                 defaultValue={cardInfo.createdBy}
               />
@@ -118,26 +120,27 @@ class Card extends Component {
               <label htmlFor="assignedTo">Assigned To:</label>
               <input
                 id="assignedTo"
+                name="assignedTo"
                 type="text"
                 defaultValue={cardInfo.assignedTo}
               />
             </div>
             <div id="save" className="buttonControl">
-
               {/* <div id="save"> */}
               <button
                 type="submit"
                 id="submit"
-                formAction={`tasks/delete/${cardInfo.id}`}
+                formAction={`tasks/update/${cardInfo.id}`}
+                method="POST"
                 className="center"
-                onClick={() => this.saveCard()}
+                // onClick={() => this.saveCard()}
               >
                 Save
               </button>
               <button
                 type="submit"
                 id="delete"
-                formAction={`tasks/save/${cardInfo.id}`}
+                formAction={`tasks/delete/${cardInfo.id}`}
                 className="center"
                 // onClick={() => this.deleteCard()}
                 // formNoValidate
@@ -153,9 +156,8 @@ class Card extends Component {
               >
                 Cancel
               </button>
-              </form>
             </div>
-          </div>
+          </form>
         </div>
       );
     }

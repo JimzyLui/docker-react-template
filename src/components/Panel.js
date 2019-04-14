@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 // import {arrCards} from './data';
-import Card from './Card.js';
+import Card from "./Card.js";
 // const moment = require('moment');
 
 class Panel extends Component {
@@ -12,15 +12,15 @@ class Panel extends Component {
     };
     this.getTasks = this.getTasks.bind(this);
     this.getTasks();
-// console.log('Panel props', props);
+    // console.log('Panel props', props);
     // .then( (arrTasks) => {
     // console.log('initial arrTasks: ', arrTasks.length());
     // // console.log('initial: ', this.state.arrCards);
     // })
   }
-  componentDidMount(){
+  componentDidMount() {
     // this.getTasks();
-    console.log('Panel...componentDidMount');
+    // console.log("Panel...componentDidMount");
   }
   /*
   componentDidUpdate(prevProps) {
@@ -31,63 +31,62 @@ class Panel extends Component {
   }
   */
   getTasks() {
-    fetch('/tasks')
-    .then((res) => { return res.json() })
-    .then((arrTasks) => {
-      console.log('getTasks: arrTasks: ', arrTasks);
-      console.log('getTasks');
-      this.setState({ arrCards: arrTasks });
-      console.log('arrCards: ',this.state.arrCards);
-      // return arrTasks;
-    })
-    .catch( error => {
-      console.error( 'error:  ' + error.message );
-    })
-    .then( () => {
-      console.log( "I am always called even if the prior then's promise rejects" );
-    });
+    fetch("/tasks")
+      .then(res => {
+        return res.json();
+      })
+      .then(arrTasks => {
+        // console.log("getTasks: arrTasks: ", arrTasks);
+        // console.log("getTasks");
+        this.setState({ arrCards: arrTasks });
+        // console.log("arrCards: ", this.state.arrCards);
+        // return arrTasks;
+      })
+      .catch(error => {
+        console.error("error:  " + error.message);
+      })
+      .then(() => {
+        // console.log(
+        //   "I am always called even if the prior then's promise rejects"
+        // );
+      });
   }
 
-  render(){
+  render() {
     // const panelTitle = this.props;
     // console.log('this.props:************',this.props);
     // console.log('this.props.children: ',this.props.children);
     const panelTitle = this.props.children;
-    const {arrCards} = this.state;
+    const { arrCards } = this.state;
 
-    // console.log(arrCards);
-    console.log('arrCards rendering..: ', arrCards);
-    // console.log('>>>>>>>>>>>>>>>>>',panelTitle);
+    // console.log('arrCards rendering..: ', arrCards);
     return (
-      <div title={panelTitle} className='panel'>
+      <div title={panelTitle} className="panel">
         <h2>{panelTitle}</h2>
-        <div id={panelTitle} className='content'>
-        {
-          arrCards
-            .filter(card=>
-                card.status===panelTitle.toLowerCase()
-                // console.log('filtering card', card)
-             )
-            .map(card=>{
-              console.log('card.title: ',card.title);
+        <div id={panelTitle} className="content">
+          {arrCards
+            .filter(
+              card => card.status === panelTitle.toLowerCase()
+              // console.log('filtering card', card)
+            )
+            .map(card => {
+              // console.log('card.title: ',card.title);
               return (
-                <Card key={card.id}
-                cardInfo={card}
-                          // title={card.title}
-                          // body={card.body}
-                          // priority={card.priority}
-                          // createdBy={card.createdBy}
-                          // assignedTo={card.assignedTo}
-                          />
-              )
-            })
-        }
+                <Card
+                  key={card.id}
+                  cardInfo={card}
+                  // title={card.title}
+                  // body={card.body}
+                  // priority={card.priority}
+                  // createdBy={card.createdBy}
+                  // assignedTo={card.assignedTo}
+                />
+              );
+            })}
         </div>
       </div>
-
     );
   }
 }
-
 
 export default Panel;

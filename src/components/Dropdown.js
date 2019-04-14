@@ -10,13 +10,13 @@ class Dropdown extends Component {
     this.state = {};
   }
   componentDidMount() {
-    console.log("Dropdown...componentDidMount");
+    // console.log("Dropdown...componentDidMount");
   }
 
   render() {
     const arrChoices = this.props.choices;
-    console.log("arrChoices: ", arrChoices);
-    console.log("defaultValue", this.props.defaultValue);
+    // console.log("dropdown: arrChoices: ", arrChoices);
+    // console.log("dropdown defaultValue", this.props.defaultValue);
     const sName = this.props.name + "Select";
     return (
       <div name={sName} className="dropdown">
@@ -26,7 +26,7 @@ class Dropdown extends Component {
           defaultValue={this.props.defaultValue}
         >
           {arrChoices.map(choice => {
-            console.log("choice.name: ", choice);
+            // console.log("choice.name: ", choice);
             return <Option key={choice} name={choice} />;
           })}
         </select>
@@ -36,9 +36,6 @@ class Dropdown extends Component {
 }
 
 function Option(props) {
-  // console.log(props)
-  console.log("Option.props: ", props);
-
   return <option className="option">{props.name}</option>;
 }
 
